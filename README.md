@@ -1,4 +1,5 @@
-# ELK-Stack
+# ELK-Stack, Tunghai University
+#### High Performance Computer Laboratory 2016
 # <img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Elastic%20Logo.png" alt="Build and run unikernels" width="200" height="75">
 
 # Elasticsearch, Logstash and Kibana Installation
