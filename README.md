@@ -187,3 +187,55 @@ Check Logstash version
 ```
 bin/logstash --version
 ```
+#### 7. Generate SSL
+Create directory
+```
+sudo mkdir -p /etc/certs
+```
+Edit openssl configuration
+```
+sudo vim /etc/ssl/openssl.cnf
+with:
+subjectAltName = IP: [Logstash IP-Address]
+```
+Entrance following path
+```
+cd /etc/certs
+```
+Generate SSL certificate
+```
+sudo openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout server.key -out server.crt
+```
+Configure central.conf
+```
+sudo vim /etc/logstash/conf.d/central.conf
+with:
+input {
+ beats {
+			port	=> 5044
+			ssl => true
+			ssl_certificate => “/etc/certs/server.crt”
+			ssl_key => “/etc/certs/server.key”
+} 
+   }
+	filter{}
+	output{
+		elasticsearch {
+				hosts => “<IP Address>”
+				sniffing => true
+				manage_template => false
+				index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+document_type => "%{[@metadata][type]}"
+}
+}
+```
+Compile central config file
+```
+sudo service logstash configtest
+```
+Restart logstash service
+```
+sudo service logstash restart
+```
+#### 8.
+#### 9.
