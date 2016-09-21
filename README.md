@@ -32,4 +32,4 @@ sudo apt-get install ntp openssh-server
 ```
 * ##### Elasticsearch
 * ##### Logstash
-* ##### Kibana4
+* ##### Kibana41
