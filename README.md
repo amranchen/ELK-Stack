@@ -66,5 +66,65 @@ with:
 network.host	: [IP Address]
 http.port		: 9200
 ```
-#### 4. Logstash
-#### 5. Kibana
+Restart elasticsearch service
+```
+sudo service elasticsearch restart
+```
+Set elasticsearch as default service
+```
+sudo update-rc.d elasticsearch defaults 95 10
+```
+Elasticsearch testing
+```
+curl -X GET 'http://IP Address:9200'
+```
+#### 4. Kibana
+Download Kibana package
+```
+wget https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz
+```
+Extract file
+```
+tar xvf kibana-*.tar.gz
+```
+Edit kibana.yml file
+```
+sudo vim ~/kibana-4*/config/kibana.yml
+with:
+server.port		: 5601
+server.host		: "[IP Address]"
+elasticsearch.url	: http://[IP Address]:9200
+```
+Create directory
+```
+sudo mkdir -p /opt/kibana
+```
+Copy kibana path to /opt/kibana
+```
+sudo cp -R ~/kibana-4*/* /opt/kibana/
+```
+Give permission for /opt/kibana
+```
+sudo chown -R [username]: /opt/kibana
+```
+Download service package
+```
+cd /etc/init.d && sudo wget https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/bce61d85643c2dcdfbc2728c55a41dab444dca20/kibana4
+```
+Give permission for /etc/init.d/kibana4 path
+```
+sudo chmod +x /etc/init.d/kibana4
+```
+Give permission for kibana path
+```
+sudo chmod +x /etc/init.d/kibana4
+```
+Start Kibana service
+```
+sudo service kibana4 start
+```
+Check kibana version
+```
+bin/kibana version
+```
+#### 5. Logstash
