@@ -21,7 +21,7 @@ Update and upgrade operating system
 ```
 sudo apt-get update && sudo apt-get -y upgrade
 ```  
-Add IP Address on host
+Add IP-Address on host
 ```
 sudo vim /etc/hosts
 ```  
@@ -63,7 +63,7 @@ Edit elasticsearch.yml file
 ```
 sudo vim /etc/elasticsearch/elasticsearch.yml
 with:
-network.host	: [IP Address]
+network.host	: [IP-Address]
 http.port		: 9200
 ```
 Restart elasticsearch service
@@ -76,7 +76,7 @@ sudo update-rc.d elasticsearch defaults 95 10
 ```
 Elasticsearch testing
 ```
-curl -X GET 'http://IP Address:9200'
+curl -X GET 'http://IP-Address:9200'
 ```
 #### 4. Kibana
 Download Kibana package
@@ -92,8 +92,8 @@ Edit kibana.yml file
 sudo vim ~/kibana-4*/config/kibana.yml
 with:
 server.port		: 5601
-server.host		: "[IP Address]"
-elasticsearch.url	: http://[IP Address]:9200
+server.host		: "[IP-Address]"
+elasticsearch.url	: http://[IP-Address]:9200
 ```
 Create directory
 ```
@@ -127,4 +127,63 @@ Check kibana version
 ```
 bin/kibana version
 ```
-#### 5. Logstash
+#### 5. Nginx
+
+```
+sudo apt-get install nginx -y apache2-utils
+```
+
+```
+sudo htpasswd -c /etc/nginx/htpasswd.users kibanaadmin
+with password: xxxxxx
+```
+
+```
+sudo vim /etc/nginx/sites-available/default
+with add this following script:
+server {
+    listen 80;
+
+    server_name <your ip here>;
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://<your ip here>:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;        
+    }
+}
+```
+Restart nginx service
+```
+sudo service nginx restart
+```
+Check this following web:
+http://IP-Address
+
+#### 6. Logstash
+Download Logstash package
+```
+echo 'deb http://packages.elasticsearch.org/logstash/2.3/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
+```
+Update operating system
+```
+sudo apt-get update
+```
+Install Logstash
+```
+sudo apt-get install logstash
+```
+Start Logstash service
+```
+sudo service logstash start
+```
+Check Logstash version
+```
+bin/logstash --version
+```
