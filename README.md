@@ -22,3 +22,4 @@ Please read the following step by step on how to build ELK Stack. If you have an
 sudo apt-get update && sudo apt-get -y upgrade
 ```  
 * ##### Elasticsearch
+* ##### Logstash
