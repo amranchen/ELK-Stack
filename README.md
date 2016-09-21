@@ -15,9 +15,8 @@ Please read the following step by step on how to build ELK Stack. If you have an
 ### System Architecture
 
 ### Basic Installation
-#####
 ### Master Server Side
-##### 1. Ubuntu Operation
+#### 1. Ubuntu Operation
 Update and upgrade operating system
 ```
 sudo apt-get update && sudo apt-get -y upgrade
@@ -30,7 +29,7 @@ Set NTP Server
 ```
 sudo apt-get install ntp openssh-server
 ```
-##### 2. JDK 8.0
+#### 2. JDK 8.0
 Add JDK 8.0 repository
 ```
 sudo add-apt-repository -y ppa:webupd8team/java
@@ -47,6 +46,6 @@ Check java version
 ```
 java -version
 ```
-##### 3. Elasticsearch
-* ##### Logstash
-* ##### Kibana411
+#### 3. Elasticsearch
+#### 4. Logstash
+#### 5. Kibana
