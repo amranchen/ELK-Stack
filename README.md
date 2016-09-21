@@ -2,7 +2,7 @@
 #### High Performance Computer Laboratory 2016
 # <img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Elastic%20Logo.png" alt="Build and run unikernels" width="200" height="75">	<img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Logstash.png" alt="Build and run unikernels" width="200" height="75">	<img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Kibana4.png" alt="Build and run unikernels" width="200" height="75">
 
-<font color="blue">Status: **Elasticsearch, Logstash and Kibana Installation**</font>
+# Elasticsearch, Logstash and Kibana Installation
 Elasticsearch is a distributed RESTful search engine built for the cloud.
 ## Getting Started
 ---
@@ -47,6 +47,24 @@ Check java version
 java -version
 ```
 #### 3. Elasticsearch
-aa
+Download Elasticsearch key package
+```
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add
+```
+Add Elasticsearch repository
+```
+echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+```
+Install Elasticsearch
+```
+sudo apt-get -y install elasticsearch
+```
+Edit elasticsearch.yml file
+```
+sudo vim /etc/elasticsearch/elasticsearch.yml
+with:
+network.host	: [IP Address]
+http.port		: 9200
+```
 #### 4. Logstash
 #### 5. Kibana
