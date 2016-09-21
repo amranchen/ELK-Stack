@@ -17,10 +17,19 @@ Please read the following step by step on how to build ELK Stack. If you have an
 ### Basic Installation
 #####
 ##### Master Server Side
-##### Java Installation
+##### Ubuntu Operation
+Update and upgrade operating system
 ```
 sudo apt-get update && sudo apt-get -y upgrade
 ```  
+Add IP Address on host
+```
+sudo vim /etc/hosts
+```  
+Set NTP Server
+```
+sudo apt-get install ntp openssh-server
+```
 * ##### Elasticsearch
 * ##### Logstash
 * ##### Kibana4
