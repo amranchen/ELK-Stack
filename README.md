@@ -16,7 +16,7 @@ Please read the following step by step on how to build ELK Stack. If you have an
 
 ### Basic Installation
 #####
-#### * Master Server Side
+### Master Server Side
 ##### 1. Ubuntu Operation
 Update and upgrade operating system
 ```
