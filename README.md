@@ -47,5 +47,6 @@ Check java version
 java -version
 ```
 #### 3. Elasticsearch
+aa
 #### 4. Logstash
 #### 5. Kibana
