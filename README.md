@@ -342,4 +342,4 @@ sudo update-rc.d filebeat defaults 95 10
 ```
 Visit Kibana web:
 http://IP-Address:5601
-
+![Kibana Result](https://github.com/amranchen/ELK-Stack/blob/master/Images/Kibana%20Web.png)
