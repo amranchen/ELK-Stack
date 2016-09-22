@@ -1,5 +1,5 @@
-# ELK-Stack, Tunghai University
-#### High Performance Computer Laboratory 2016
+# ELK-Stack, Tunghai University                                                             Author  : Cai-Jin Chen 
+#### High Performance Computer Laboratory 2016                                              Date    : 21 September 2016
 # <img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Elastic%20Logo.png" alt="Build and run unikernels" width="200" height="75">	<img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Logstash.png" alt="Build and run unikernels" width="200" height="75">	<img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/Kibana4.png" alt="Build and run unikernels" width="200" height="75">
 
 # Elasticsearch, Logstash and Kibana Installation
