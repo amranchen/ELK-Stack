@@ -170,7 +170,7 @@ http://IP-Address
 #### 6. Logstash
 Download Logstash package
 ```
-echo 'deb http://packages.elasticsearch.org/logstash/2.3/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
+echo 'deb http://packages.elasticsearch.org/logstash/2.4/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
 ```
 Update operating system
 ```
@@ -213,7 +213,7 @@ sudo vim /etc/logstash/conf.d/central.conf
 with:
 input {
  beats {
-			port	=> 5044
+			port => 5044
 			ssl => true
 			ssl_certificate => “/etc/certs/server.crt”
 			ssl_key => “/etc/certs/server.key”
@@ -238,6 +238,74 @@ Restart logstash service
 ```
 sudo service logstash restart
 ```
-#### 8.
+#### 8. Load Kibana Dashboard
+Download beat dashboard
+```
+curl -L -O http://download.elastic.co/beats/dashboards/beats-dashboards-1.3.1.zip
+```
+Install zip
+```
+sudo apt-get -y install unzip
+```
+Extract beats dashboards
+```
+unzip beats-dashboards-*.zip
+```
+Entrance beats-dashboards path
+```
+cd beats-dashboards-*
+```
+Edit load.sh file
+```
+sudo vim load.sh
+with:
+ELASTICSEARCH=http://[IP-Address]:9200
+```
+Compile load.sh file
+```
+./load.sh
+```
+#### 9. Load Filebeat Index Template in Elasticsearch
+Download Filebeat index template
+```
+https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
+curl -XPUT 'http://IP-sssssssssssssssssssssssssssAddress:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
+```
+Restart Kibana service
+```
+sudo service kibana4 restart
+```
+#### 10. SSL Copying
+Copy Master's SSL to Slave
+```
+scp /etc/certs/server.crt user@client_server_private_address:/tmp
+scp /etc/certs/server.key user@client_server_private_address:/tmp
+```
+Move certificate and key
+```
+sudo mv server.crt server.key /etc
+```
 
-#### 9.
+### Slave Server Side
+#### 1. Install Filebeat
+Build beats source-list
+```
+echo "deb https://packages.elastic.co/beats/apt stable main" |  sudo tee -a /etc/apt/sources.list.d/beats.list
+```
+Download GPG Key of Elasticsearch
+```
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+```
+Update operating system
+```
+sudo apt-get update
+```
+Install Filebeat
+```
+sudo apt-get install filebeat
+```
+### 2. Configure Filebeat
+Edit filebeat.yml file
+```
+sudo vim /etc/filebeat/filebeat.yml
+```
