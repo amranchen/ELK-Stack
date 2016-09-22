@@ -308,4 +308,38 @@ sudo apt-get install filebeat
 Edit filebeat.yml file
 ```
 sudo vim /etc/filebeat/filebeat.yml
+Edit for:
+* paths:
+    - /var/log/*.log
+* document_type: syslog
+Comment for
+output:
+  ### Elasticsearch as output
+  # elasticsearch
+  ...
+  ...
+
+  # hosts: ["localhost:9200"]
+
+Uncomment for:
+logstash:
+host: ["IP-Address:5044"]
+
+Add for:
+bulk_max_size: 1024
+
+Uncomment for:
+tls:
+certificate_authorities: ["/etc/server.crt"]
 ```
+Restart filebeat service
+```
+sudo service filebeat restart
+```
+Default setting for service
+```
+sudo update-rc.d filebeat defaults 95 10
+```
+Visit Kibana web:
+http://IP-Address:5601
+
