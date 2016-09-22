@@ -14,7 +14,7 @@ Please read the following step by step on how to build ELK Stack. If you have an
 * Master Server and Slave Server
 
 ## System Architecture
-![System Architecture](https://github.com/amranchen/ELK-Stack/blob/master/Images/ELK%20Stack.png)
+![General Architecture](https://github.com/amranchen/ELK-Stack/blob/master/Images/ELK%20Stack.png)
 
 ### Basic Installation
 ### Master Server Side
