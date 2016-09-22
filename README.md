@@ -259,7 +259,7 @@ cd beats-dashboards-*
 Edit load.sh file
 ```
 sudo vim load.sh
-with:
+with: 
 ELASTICSEARCH=http://[IP-Address]:9200
 ```
 Compile load.sh file
