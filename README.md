@@ -12,8 +12,9 @@ Please read the following step by step on how to build ELK Stack. If you have an
 * Java SE Development Kit 8 (JDK 8)
 * Elasticsearch 2.4.0; Logstash 2.4.0; Kibana 4.6.1; Filebeat 1.3.1
 * Master Server and Slave Server
-### System Architecture
-# <img src="https://github.com/amranchen/ELK-Stack/blob/master/Images/ELK%20Stack.png" alt="Build and run unikernels" width="1000" height="300">
+
+## System Architecture
+![System Architecture](https://github.com/amranchen/ELK-Stack/blob/master/Images/ELK%20Stack.png)
 
 ### Basic Installation
 ### Master Server Side
