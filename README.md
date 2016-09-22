@@ -16,7 +16,7 @@ Please read the following step by step on how to build ELK Stack. If you have an
 ### System Architecture
 ![General Architecture](https://github.com/amranchen/ELK-Stack/blob/master/Images/ELK%20Stack.png)
 
-### Basic Installation
+### Basic Installation 
 ### Master Server Side
 #### 1. Ubuntu Operation
 Update and upgrade operating system
